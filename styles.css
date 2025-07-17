@@ -57,3 +57,36 @@ button:hover {
     font-weight: bold;
     color: #333;
 }
+
+#color-history {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  max-height: 98vh;    
+  overflow-y: auto;    
+}
+
+.color-entry {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 10px;
+}
+
+#color-history strong {
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 15px; 
+}
+
+.color-preview {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+}

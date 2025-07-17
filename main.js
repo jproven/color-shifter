@@ -15,4 +15,23 @@ function setRandomBackgroundColor() {
     const color = getRandomColorRGB();
     document.body.style.backgroundColor = color.rgb;
     document.getElementById('colorValue').textContent = `${color.rgb} / ${color.hex}`;
+    addToHistory(color);
+}
+
+function addToHistory(color) {
+    const history = document.getElementById('color-history');
+
+    const entry = document.createElement('div');
+    entry.className = 'color-entry';
+
+    const preview = document.createElement('div');
+    preview.className = 'color-preview';
+    preview.style.backgroundColor = color.rgb;
+
+    const label = document.createElement('span');
+    label.textContent = `${color.rgb} / ${color.hex}`;
+
+    entry.appendChild(preview);
+    entry.appendChild(label);
+    history.appendChild(entry);
 }

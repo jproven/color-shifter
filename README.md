@@ -23,6 +23,12 @@ Color Shifter is a simple and interactive web application that lets you generate
 
 ---
 
+## License
+
+This project is licensed under the GNU General Public License (GPL). For more details, see the full license text.
+
+---
+
 ## How to Use
 
 1. Open the page in your browser.

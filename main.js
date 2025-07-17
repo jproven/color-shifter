@@ -1,3 +1,11 @@
+document.addEventListener('DOMContentLoaded', () => {
+    ['R', 'G', 'B'].forEach(channel => {
+        document.getElementById(`slider${channel}`).addEventListener('input', updateColorFromSliders);
+    });
+});
+
+let currentColor = { rgb: 'rgb(255,255,255)', hex: '#ffffff' };
+
 function getRandomColorRGB() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
@@ -61,3 +69,20 @@ function copyToClipboard(text) {
         .catch(err => console.error('Failed to copy:', err));
 }
 
+function updateColorFromSliders() {
+    const r = parseInt(document.getElementById('sliderR').value);
+    const g = parseInt(document.getElementById('sliderG').value);
+    const b = parseInt(document.getElementById('sliderB').value);
+
+    const rgb = `rgb(${r}, ${g}, ${b})`;
+    const hex = rgbToHex(r, g, b);
+
+    document.body.style.backgroundColor = rgb;
+    document.getElementById('colorValue').textContent = `${rgb} / ${hex}`;
+
+    currentColor = { rgb, hex };
+}
+
+function addCurrentColorToHistory() {
+    addToHistory(currentColor);
+}

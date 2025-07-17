@@ -28,10 +28,34 @@ function addToHistory(color) {
     preview.className = 'color-preview';
     preview.style.backgroundColor = color.rgb;
 
+    const rgbText = document.createElement('span');
+    rgbText.textContent = color.rgb;
+    rgbText.style.cursor = 'pointer';
+    rgbText.title = `Click to copy RGB`;
+    rgbText.addEventListener('click', () => copyToClipboard(color.rgb));
+
+    const separator = document.createElement('span');
+    separator.textContent = ' / ';
+
+    const hexText = document.createElement('span');
+    hexText.textContent = color.hex;
+    hexText.style.cursor = 'pointer';
+    hexText.title = 'Click to copy HEX';
+    hexText.addEventListener('click', () => copyToClipboard(color.hex));
+    
     const label = document.createElement('span');
-    label.textContent = `${color.rgb} / ${color.hex}`;
+    label.appendChild(rgbText);
+    label.appendChild(separator);
+    label.appendChild(hexText);
 
     entry.appendChild(preview);
     entry.appendChild(label);
     history.appendChild(entry);
 }
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text)
+        .then(() => alert(`Copied: ${text}`))
+        .catch(err => console.error('Failed to copy:', err));
+}
+

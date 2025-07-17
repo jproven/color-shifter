@@ -50,3 +50,10 @@ button:hover {
     background-color: #414142;
     color: white;
 }
+
+#colorValue {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}

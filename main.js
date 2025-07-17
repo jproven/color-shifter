@@ -51,6 +51,8 @@ function addToHistory(color) {
     entry.appendChild(preview);
     entry.appendChild(label);
     history.appendChild(entry);
+
+    history.scrollTop = history.scrollHeight;
 }
 
 function copyToClipboard(text) {

@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     ['R', 'G', 'B'].forEach(channel => {
-        document.getElementById(`slider${channel}`).addEventListener('input', updateColorFromSliders);
+        const slider = document.getElementById(`slider${channel}`);
+        const valueDisplay = document.getElementById(`value${channel}`);
+
+        slider.addEventListener('input', () => {
+            valueDisplay.textContent = slider.value;
+            updateColorFromSliders();
+        });
     });
 });
 
@@ -10,12 +16,12 @@ function getRandomColorRGB() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
-    return { 
+    return {
         r,
         g,
         b,
-        rgb: `rgb(${r}, ${g}, ${b})`, 
-        hex: rgbToHex(r, g, b) 
+        rgb: `rgb(${r}, ${g}, ${b})`,
+        hex: rgbToHex(r, g, b)
     };
 }
 
@@ -29,10 +35,14 @@ function setRandomBackgroundColor() {
     const color = getRandomColorRGB();
     document.body.style.backgroundColor = color.rgb;
     document.getElementById('colorValue').textContent = `${color.rgb} / ${color.hex}`;
-    
+
     document.getElementById('sliderR').value = color.r;
     document.getElementById('sliderG').value = color.g;
     document.getElementById('sliderB').value = color.b;
+
+    document.getElementById('valueR').textContent = color.r;
+    document.getElementById('valueG').textContent = color.g;
+    document.getElementById('valueB').textContent = color.b;
 
     currentColor = { rgb: color.rgb, hex: color.hex };
     addToHistory(currentColor);
@@ -62,7 +72,7 @@ function addToHistory(color) {
     hexText.style.cursor = 'pointer';
     hexText.title = 'Click to copy HEX';
     hexText.addEventListener('click', () => copyToClipboard(color.hex));
-    
+
     const label = document.createElement('span');
     label.appendChild(rgbText);
     label.appendChild(separator);

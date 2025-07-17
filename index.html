@@ -15,9 +15,23 @@
     <button onclick="setRandomBackgroundColor()">Change Color</button>
     <p id="colorValue">#FFFFFF</p>
     <div class="slider-container">
-      <label><span>R:</span> <input type="range" id="sliderR" min="0" max="255" value="255"></label>
-      <label><span>G:</span> <input type="range" id="sliderG" min="0" max="255" value="255"></label>
-      <label><span>B:</span> <input type="range" id="sliderB" min="0" max="255" value="255"></label>
+      <label>
+        <span>R:</span> 
+        <input type="range" id="sliderR" min="0" max="255" value="255">
+        <span id="valueR">255</span>
+      </label>
+
+      <label>
+        <span>G:</span> 
+        <input type="range" id="sliderG" min="0" max="255" value="255">
+        <span id="valueG">255</span>
+      </label>
+
+      <label>
+        <span>B:</span> 
+        <input type="range" id="sliderB" min="0" max="255" value="255">
+        <span id="valueB">255</span>
+      </label>
       <button onclick="addCurrentColorToHistory()">Add to History</button>
     </div>
   </div>

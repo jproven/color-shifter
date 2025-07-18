@@ -51,6 +51,13 @@ function setRandomBackgroundColor() {
 function addToHistory(color) {
     const history = document.getElementById('color-history');
 
+    const isMobile = window.innerWidth <= 768; 
+    const maxEntries = isMobile ? 3 : 50;
+
+    while (history.querySelectorAll('.color-entry').length >= maxEntries) {
+        history.removeChild(history.querySelector('.color-entry'));
+    }
+
     const entry = document.createElement('div');
     entry.className = 'color-entry';
 

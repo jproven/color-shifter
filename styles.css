@@ -120,6 +120,11 @@ button:hover {
     padding: 6px;
   }
 
+  .container {
+    position: relative;
+    top: -10vh;
+  }
+
   .color-entry {
     margin: 4px;
   }
